@@ -1,13 +1,11 @@
 import React from 'react';
 import DayListItem from './DayListItem'
 
-const DayList = (props) => {
+const DayList = props => {
     const DayMap = props.days.map(
       day => 
-      day.name === props.day ? 
-      <DayListItem name={day.name} spots={day.spots} setDay={props.setDay} selected />
-    : <DayListItem name={day.name} spots={day.spots} setDay={props.setDay} />);
-
+      <DayListItem key={day.id} name={day.name} spots={day.spots} setDay={props.onChange} selected={day.name === props.value} />
+    )
     return (<ul>{DayMap}</ul>);
 }
 
