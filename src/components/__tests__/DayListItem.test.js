@@ -2,7 +2,7 @@ import React from "react";
 
 import { render, cleanup } from "@testing-library/react";
 
-import DayListItem from "components/DayListItem";
+import DayListItem from "/home/dio/lighthouse/scheduler2/src/components/DayListItem.js";
 
 afterEach(cleanup);
 

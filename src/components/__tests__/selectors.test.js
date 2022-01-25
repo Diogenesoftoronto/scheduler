@@ -1,5 +1,5 @@
 import getAppointmentsForDay from
-"helpers/selectors.js"
+"/home/dio/lighthouse/scheduler2/src/helpers/selectors.js"
 
 // function getAppointmentsForDay (state, day) { 
 //   const appointmentDay = state.days.find(appDay => appDay.name === day)

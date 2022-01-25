@@ -2,7 +2,7 @@ import React from "react";
 
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import Button from "components/Button";
+import Button from "/home/dio/lighthouse/scheduler2/src/components/Button.js";
 
 afterEach(cleanup);
 
