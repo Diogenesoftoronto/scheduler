@@ -17,7 +17,7 @@ const Appointment = props => {
   time ? appointStr = null 
   : appointStr =  "No Appointments";
   
-    return <article className="appointment"><Header time={time}/>
+  return <article className="appointment"><Header time={time}/>
     {showComponent ? showComponent : <Empty onAdd={onAdd}/>}
       {appointStr}
     </article>
