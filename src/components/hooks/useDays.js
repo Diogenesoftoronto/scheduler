@@ -23,11 +23,7 @@ import axios from "axios";
 const useDays = (url, days) => {
   // const [days, setDays] = useState(null);
 
-  // const [data, setData] = useState({
-  // days,
-  // pending: true,
-  // error: null
-  // });
+ 
 
   useEffect(() => {
     axios
