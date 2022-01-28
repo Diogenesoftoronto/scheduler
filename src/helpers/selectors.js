@@ -14,7 +14,6 @@ const getAppointmentsForDay = (state, day) => {
 const getInterview = (state, interview) => {
 
   let result = {}
-  let student = null;
   const { interviewers } = state;
 
   const helperInterview = (interviewers, interview ) => {
