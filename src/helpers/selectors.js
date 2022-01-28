@@ -5,17 +5,17 @@ const getAppointmentsForDay = (state, day) => {
   let filteredDay;
   !appointmentDay ? filteredDay = [] 
   : filteredDay = Object.values(appointments).filter(appointment => {
-      return appointmentDay.appointments.includes(appointment.id)
-    });
+    return appointmentDay.appointments.includes(appointment.id)
+  });
+  console.log("appointmentDay", appointmentDay)
   return filteredDay;
 }
 
 
 const getInterview = (state, interview) => {
-
   let result = {}
   const { interviewers } = state;
-
+  console.log("interviewers", interviewers)
   const helperInterview = (interviewers, interview ) => {
     const result = {}
     const {student} = interview;
@@ -27,10 +27,10 @@ const getInterview = (state, interview) => {
         avatar: 'https://image.shutterstock.com/image-illustration/not-available-red-rubber-stamp-260nw-586791809.jpg'
       }
     }
-      // console.log("interview-->", interview, "<----\n",
-      //             "interviewer--->", interviewer, "<----\n",
-      //             "student--->", student,
-      //             "state---->",state);
+    console.log("interview-->", interview, "<----\n",
+                "interviewer--->", interviewer, "<----\n",
+                "student--->", student,
+                "state---->",state);
       
       Object.assign(result, {
         student,

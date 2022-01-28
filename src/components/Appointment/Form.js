@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
-import Button from "components/Button"
-import InterviewerList from "components/InterviewerList"
+import Button from "./../Button.js"
+import InterviewerList from "./../InterviewerList.js"
 
 const Form = (props) => {
   const {student, interviewers, interviewer, onSave, onCancel} = props;
   const [studentState, setStudent] = useState(student || "");
   const [interviewerState, setInterviewer] = useState(interviewer || null);
-  
-
-
-
   return <main className="appointment__card appointment__card--create">
   <section className="appointment__card-left">
     <form autoComplete="off" onSubmit={event => event.preventDefault()}>

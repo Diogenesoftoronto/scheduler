@@ -1,34 +1,36 @@
 
-import React, {useState, useEffect} from "react";
-import axios from "axios"
+import React from "react";
 import DayList from "./DayList"
-import Appointment from "/home/dio/lighthouse/scheduler2/src/components/Appointment/index.js";
+import Appointment from "../components/Appointment";
 import "./Application.scss";
-import {getAppointmentsForDay, getInterview} from "/home/dio/lighthouse/scheduler2/src/helpers/selectors.js";
-import useApplication from "./useApplication"
+import {getAppointmentsForDay, getInterview} from "../helpers/selectors";
+import useApplication from "./hooks/useApplication";
+console.log(typeof Application)
 
-export default function Application(props) {
-  const [state, setState] = useApplication([ "/api/days",
+function Application (props) {
+  const [state, setState] = useApplication(
+
+["/api/days",
  "/api/appointments",
-  "/api/interviewers"], 'Monday');
-  console.log()
-  const {day} = state;
-  const setDay = day => setState({ ...state, day });
+ "/api/interviewers"], 'Monday');
+ const {day} = state;
+ const setDay = day => setState({ ...state, day });
  
-  // render appoints by the selected day
-  const appointmentsForDay = getAppointmentsForDay(state, day)
-  const AppointmentMap = Object.values(appointmentsForDay).map(app =>
+ // render appoints by the selected day
+ const appointmentsForDay = getAppointmentsForDay(state, day)
+ console.log("hello world from Application", appointmentsForDay);
+ const AppointmentMap = Object.values(appointmentsForDay).map(app =>
   { 
     const interview = getInterview(state, app.interview)
     // console.log("in app componenet", interview)
-  return <Appointment
+    return <Appointment
     key={app.id}
     id={app.id}
     time={app.time}
     interview={interview} 
     />})
-  return (
-    <main className="layout">
+    return (
+      <main className="layout">
       <section className="sidebar">
         <img
   className="sidebar--centered"
@@ -55,3 +57,4 @@ export default function Application(props) {
     </main>
   );
 }
+export default Application;

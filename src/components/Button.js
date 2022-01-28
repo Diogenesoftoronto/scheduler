@@ -2,8 +2,6 @@ import React from "react";
 import classNames from "classnames";
 import './Button.scss'
 
-import "/home/dio/lighthouse/scheduler2/src/components/Button.scss";
-
 export default function Button(props) {
    let buttonClass = classNames("button", {"button--danger": props.danger, "button--confirm": props.confirm});
    
