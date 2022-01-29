@@ -5,7 +5,6 @@ import Appointment from "../components/Appointment";
 import "./Application.scss";
 import {getAppointmentsForDay, getInterview} from "../helpers/selectors";
 import useApplication from "./hooks/useApplication";
-console.log(typeof Application)
 
 function Application (props) {
   const [state, setState] = useApplication(
@@ -18,7 +17,7 @@ function Application (props) {
  
  // render appoints by the selected day
  const appointmentsForDay = getAppointmentsForDay(state, day)
- console.log("hello world from Application", appointmentsForDay);
+//  console.log("hello world from Application", appointmentsForDay);
  const AppointmentMap = Object.values(appointmentsForDay).map(app =>
   { 
     const interview = getInterview(state, app.interview)
