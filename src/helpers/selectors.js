@@ -7,15 +7,28 @@ const getAppointmentsForDay = (state, day) => {
   : filteredDay = Object.values(appointments).filter(appointment => {
     return appointmentDay.appointments.includes(appointment.id)
   });
-  console.log("appointmentDay", appointmentDay)
+  // console.log("appointmentDay", appointmentDay, "filteredDay", filteredDay)
   return filteredDay;
 }
 
 
+// create a function that returns the interviewers for the day
+const getInterviewersForDay = (state, day) => {
+  const {days, interviewers} = state;
+  const interviewerForDay = days.find(interDay => interDay.name === day)
+  let filteredInterviewers;
+  !interviewerForDay ? filteredInterviewers = []
+  : filteredInterviewers = Object.values(interviewers).filter(interviewer => {
+    return interviewerForDay.interviewers.includes(interviewer.id)
+  });
+    // console.log("appointmentInterviewer", interviewerForDay)
+  return filteredInterviewers;
+}
+
 const getInterview = (state, interview) => {
   let result = {}
   const { interviewers } = state;
-  console.log("interviewers", interviewers)
+  // console.log("interviewers", interviewers)
   const helperInterview = (interviewers, interview ) => {
     const result = {}
     const {student} = interview;
@@ -27,10 +40,10 @@ const getInterview = (state, interview) => {
         avatar: 'https://image.shutterstock.com/image-illustration/not-available-red-rubber-stamp-260nw-586791809.jpg'
       }
     }
-    console.log("interview-->", interview, "<----\n",
-                "interviewer--->", interviewer, "<----\n",
-                "student--->", student,
-                "state---->",state);
+    // console.log("interview-->", interview, "<----\n",
+    //             "interviewer--->", interviewer, "<----\n",
+    //             "student--->", student,
+    //             "state---->",state);
       
       Object.assign(result, {
         student,
@@ -44,4 +57,4 @@ const getInterview = (state, interview) => {
     return result;
 }
 
-export {getAppointmentsForDay, getInterview};
+export {getAppointmentsForDay, getInterview, getInterviewersForDay};
