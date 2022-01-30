@@ -1,66 +1,68 @@
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from
-"/home/dio/lighthouse/scheduler2/src/helpers/selectors.js"
-
-
+import {
+  getAppointmentsForDay,
+  getInterview,
+  getInterviewersForDay,
+} from "/home/dio/lighthouse/scheduler2/src/helpers/selectors.js";
 
 const state = {
   days: [
-    { id: 1,
-      name:"Monday",
-      appointments:[1,2,3,4,5],
-      interviewers:[2,5,3,7,9],
-      spots: 3
+    {
+      id: 1,
+      name: "Monday",
+      appointments: [1, 2, 3, 4, 5],
+      interviewers: [2, 5, 3, 7, 9],
+      spots: 3,
     },
     {
       id: 2,
-      name:"Tuesday",
-      appointments:[4,5,8,9,10],
-      interviewers:[2,5,1,7,9],
-      spots: 4
-    }
+      name: "Tuesday",
+      appointments: [4, 5, 8, 9, 10],
+      interviewers: [2, 5, 1, 7, 9],
+      spots: 4,
+    },
   ],
   appointments: {
-    "1": { id: 1, time: "12pm", interview: null },
-    "2": { id: 2, time: "1pm", interview: null },
-    "3": {
+    1: { id: 1, time: "12pm", interview: null },
+    2: { id: 2, time: "1pm", interview: null },
+    3: {
       id: 3,
       time: "2pm",
-      interview: { student: "Archie Cohen", interviewer: 2 }
+      interview: { student: "Archie Cohen", interviewer: 2 },
     },
-    "4": { id: 4, time: "3pm", interview: null },
-    "5": {
+    4: { id: 4, time: "3pm", interview: null },
+    5: {
       id: 5,
       time: "4pm",
-      interview: { student: "Chad Takahashi", interviewer: 2 }
-    }
+      interview: { student: "Chad Takahashi", interviewer: 2 },
+    },
   },
   interviewers: {
-    "1": {  
+    1: {
       id: 1,
       name: "Sylvia Palmer",
-      avatar: "https://i.imgur.com/LpaY82x.png"
+      avatar: "https://i.imgur.com/LpaY82x.png",
     },
-    "2": {
+    2: {
       id: 2,
       name: "Tori Malcolm",
-      avatar: "https://i.imgur.com/Nmx0Qxo.png"
+      avatar: "https://i.imgur.com/Nmx0Qxo.png",
     },
-    "3": {
+    3: {
       id: 3,
       name: "Mildred Nazir",
-      avatar: "https://i.imgur.com/T2WwVfS.png"
+      avatar: "https://i.imgur.com/T2WwVfS.png",
     },
-    "4": {
+    4: {
       id: 4,
       name: "Cohana Roy",
-      avatar: "https://i.imgur.com/FK8V841.jpg"
+      avatar: "https://i.imgur.com/FK8V841.jpg",
     },
-    "5": {
+    5: {
       id: 5,
       name: "Sven Jones",
-      avatar: "https://i.imgur.com/twYrpay.jpg"
-    }
-  }
+      avatar: "https://i.imgur.com/twYrpay.jpg",
+    },
+  },
 };
 
 test("getAppointmentsForDay returns an array", () => {
@@ -124,8 +126,8 @@ test("getInterview returns an object with the interviewer data", () => {
       interviewer: expect.objectContaining({
         id: expect.any(Number),
         name: expect.any(String),
-        avatar: expect.any(String)
-      })
+        avatar: expect.any(String),
+      }),
     })
   );
 });
