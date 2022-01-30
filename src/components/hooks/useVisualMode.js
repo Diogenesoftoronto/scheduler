@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 
 export default function useVisualMode(initial) {
   // Note: current mode is at the top of the stack.
