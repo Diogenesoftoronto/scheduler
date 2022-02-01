@@ -6,6 +6,16 @@ const Form = (props) => {
   const { student, interviewers, interviewer, onSave, onCancel } = props;
   const [studentState, setStudent] = useState(student || "");
   const [interviewerState, setInterviewer] = useState(interviewer || null);
+  const [error, setError] = useState("");
+  // console.log("student", student)
+  function validate() {
+    if (studentState === "") {
+      setError("Student name cannot be blank");
+      return;
+    }
+  
+    onSave(studentState, interviewerState);
+  }
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -16,8 +26,11 @@ const Form = (props) => {
             type="text"
             placeholder="Enter Student Name"
             onChange={(event) => setStudent(event.target.value)}
+            data-testid="student-name-input"
+            value={studentState}
           />
         </form>
+        <section className="appointment__validation">{error}</section>
         <InterviewerList
           value={interviewerState}
           interviewers={interviewers}
@@ -31,7 +44,7 @@ const Form = (props) => {
           </Button>
           <Button
             confirm
-            onClick={() => onSave(studentState, interviewerState)}
+            onClick={() => validate()}
           >
             Save
           </Button>
