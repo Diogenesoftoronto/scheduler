@@ -1,0 +1,13 @@
+{
+  "modes": {
+    "EMPTY": "EMPTY",
+    "SHOW": "SHOW",
+    "CREATE": "CREATE",
+    "SAVING": "SAVING",
+    "ERROR": "ERROR",
+    "CONFIRM_DELETE": "CONFIRM_DELETE",
+    "CONFIRM_SAVE": "CONFIRM_SAVE",
+    "CONFIRM_EDIT": "CONFIRM_EDIT",
+    "DELETE": "DELETE"
+  }
+}
