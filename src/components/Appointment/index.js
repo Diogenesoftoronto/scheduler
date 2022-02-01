@@ -8,28 +8,31 @@ import Form from "./Form";
 import Status from "./Status";
 import Error from "./Error";
 import Confirm from "./Confirm";
+// import modes from "../../constants/modes.json";
+
+const modes = {EMPTY: "EMPTY",
+SHOW: "SHOW",
+CREATE: "CREATE",
+SAVING: "SAVING",
+ERROR: "ERROR",
+CONFIRM_DELETE: "CONFIRM_DELETE",
+CONFIRM_SAVE: "CONFIRM_SAVE",
+CONFIRM_EDIT: "CONFIRM_EDIT",
+DELETE: "DELETE"
+}
+const { SHOW, CREATE, SAVING, ERROR, EMPTY, CONFIRM_DELETE, CONFIRM_SAVE, CONFIRM_EDIT, DELETE } = modes
 
 // modes of appointment
-// may convert to json object later
-const modes = { EMPTY: "EMPTY",
- SHOW: "SHOW",
- CREATE: "CREATE",
- SAVING: "SAVING",
- ERROR: "ERROR",
- CONFIRM_DELETE: "CONFIRM_DELETE",
- CONFIRM_SAVE: "CONFIRM_SAVE",
- CONFIRM_EDIT: "CONFIRM_EDIT",
- DELETE: "DELETE"
-}
+// may convert to json object later 
 // destructuring modes
-const { SHOW, CREATE, SAVING, ERROR, EMPTY, CONFIRM_DELETE, CONFIRM_SAVE, CONFIRM_EDIT, DELETE } = modes;
+// const { SHOW, CREATE, SAVING, ERROR, EMPTY, CONFIRM_DELETE, CONFIRM_SAVE, CONFIRM_EDIT, DELETE } = JSON.parse(modes);
 const Appointment = (props) => {
   const { id, time, interview, interviewers, bookInterview, deleteInterview } =
     props;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
   let errorMessage = "unable to book appointment";
   // this function updates the form component with the completed form information when the save button
-  const save = async (name, interviewer) => {
+  const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer,
@@ -45,7 +48,7 @@ const Appointment = (props) => {
     return;
   };
   // this function deletes the form and return to the EMPTY state.
-  const onDelete = async () => {
+  const onDelete = async() => {
     transition(DELETE);
     deleteInterview(id)
       .then(() => transition(EMPTY))
@@ -54,6 +57,7 @@ const Appointment = (props) => {
       });
   };
 
+ 
   // this function closes the error component and returns to the EMPTY state.
   const onClose = () => {
     back();
@@ -98,6 +102,7 @@ const Appointment = (props) => {
   const confirmSaveComponent = (
     <Confirm
       message={confirmSaveMessage}
+      interview={interview}
       onCancel={back}
       onConfirm={() => save(interview.student, interview.interviewer)}
     />

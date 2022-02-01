@@ -14,6 +14,7 @@ const getAppointmentsForDay = (state, day) => {
 // create a function that returns the interviewers for the day
 const getInterviewersForDay = (state, day) => {
   const { days, interviewers } = state;
+  // console.log(days, typeof days);
   const interviewerForDay = days.find((interDay) => interDay.name === day);
   let filteredInterviewers;
   !interviewerForDay
