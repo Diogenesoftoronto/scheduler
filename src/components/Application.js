@@ -10,19 +10,19 @@ import {
 import useApplication from "./hooks/useApplication";
 
 function Application(props) {
-  const { state, setDay, bookInterview, deleteInterview } = useApplication();
+  const { state, setDay, bookInterview, deleteInterview} = useApplication();
   const { day, days } = state;
 
   // console.log(state);
   // render interviewers by the selected day
   const interviewersArr = getInterviewersForDay(state, day);
-
+  
   // render appointments by the selected day
   const appointmentsForDay = getAppointmentsForDay(state, day);
   //  console.log("hello world from Application", appointmentsForDay);
   const AppointmentMap = Object.values(appointmentsForDay).map((app) => {
     const interview = getInterview(state, app.interview);
-    // console.log("in app componenet", interview)
+    // console.log("in app component", interview);
     return (
       <Appointment
         key={app.id}
@@ -53,7 +53,11 @@ function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{AppointmentMap}</section>
+      <section className="schedule">{AppointmentMap}
+      <Appointment key={"last"} time={"5pm"}/>
+      
+      </section>
+
     </main>
   );
 }
