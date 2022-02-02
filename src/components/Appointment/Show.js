@@ -3,7 +3,6 @@ import "../Appointment/styles.scss";
 
 const Show = (props) => {
   const { student, interviewer, onEdit, onDelete } = props;
-  // !interviewer ? console.log(interviewer) : console.log("no interviewer");
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">

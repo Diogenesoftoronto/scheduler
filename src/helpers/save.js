@@ -15,6 +15,5 @@ const { SAVING, ERROR, SHOW} = modes;
       transition(ERROR, true);
     });
 
-  // console.log("save", id, interview, interviewer);
   return;
 };

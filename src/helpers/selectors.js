@@ -7,14 +7,12 @@ const getAppointmentsForDay = (state, day) => {
     : (filteredDay = Object.values(appointments).filter((appointment) => {
         return appointmentDay.appointments.includes(appointment.id);
       }));
-  // console.log("appointmentDay", appointmentDay, "filteredDay", filteredDay)
   return filteredDay;
 };
 
 // create a function that returns the interviewers for the day
 const getInterviewersForDay = (state, day) => {
   const { days, interviewers } = state;
-  // console.log(days, typeof days);
   const interviewerForDay = days.find((interDay) => interDay.name === day);
   let filteredInterviewers;
   !interviewerForDay
@@ -24,14 +22,12 @@ const getInterviewersForDay = (state, day) => {
           return interviewerForDay.interviewers.includes(interviewer.id);
         }
       ));
-  // console.log("appointmentInterviewer", interviewerForDay)
   return filteredInterviewers;
 };
 
 const getInterview = (state, interview) => {
   let result = {};
   const { interviewers } = state;
-  // console.log("interviewers", interviewers)
   const helperInterview = (interviewers, interview) => {
     const result = {};
     const { student } = interview;
@@ -46,10 +42,6 @@ const getInterview = (state, interview) => {
           "https://image.shutterstock.com/image-illustration/not-available-red-rubber-stamp-260nw-586791809.jpg",
       };
     }
-    // console.log("interview-->", interview, "<----\n",
-    //             "interviewer--->", interviewer, "<----\n",
-    //             "student--->", student,
-    //             "state---->",state);
 
     Object.assign(result, {
       student,

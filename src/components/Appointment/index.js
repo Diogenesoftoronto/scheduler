@@ -37,6 +37,7 @@ const Appointment = (props) => {
       student: name,
       interviewer,
     };
+    transition(CONFIRM_SAVE)
     transition(SAVING);
     bookInterview(id, interview)
       .then(() => transition(SHOW))
@@ -44,7 +45,6 @@ const Appointment = (props) => {
         transition(ERROR, true);
       });
   
-    // console.log("save", id, interview, interviewer);
     return;
   };
   // this function deletes the form and return to the EMPTY state.
@@ -117,8 +117,6 @@ const Appointment = (props) => {
       onConfirm={() => transition(CREATE)}
     />
   );
-  // console.log(mode);
-  // console.log("in create mode", interview);
   const createComponent = interview ? (
     <Form
       interviewers={interviewers}

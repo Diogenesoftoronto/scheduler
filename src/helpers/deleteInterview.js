@@ -12,7 +12,6 @@ const deleteInterview = async(id, state, setState) => {
     [id]: appointment
   };
   const deleteInterviewPromise = axios.delete(`/api/appointments/${id}`).then(setState({ ...state, appointments }));
-  // console.log("cancelInterview", id, appointment, appointments);
   return deleteInterviewPromise;
 };
 export default deleteInterview;

@@ -19,7 +19,6 @@ const bookInterview = async(id, interview, state, setState) => {
       interview: { ...interview },
       }).then(setState({ ...state, appointments }));
 
-  // console.log("bookInterview", id, interview, appointments, appointments); // id, interview
   return bookingPromise;
 };
 
