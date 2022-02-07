@@ -8,11 +8,14 @@ const Form = (props) => {
   const [interviewerState, setInterviewer] = useState(interviewer || null);
   const [error, setError] = useState("");
   function validate() {
-    if (studentState === "") {
+    if (!studentState) {
       setError("Student name cannot be blank");
       return;
+    } else if (!interviewerState) {
+      setError("Interviewer cannot be blank");
+      return;
     }
-  
+    setError("");
     onSave(studentState, interviewerState);
   }
   return (
@@ -33,7 +36,7 @@ const Form = (props) => {
         <InterviewerList
           value={interviewerState}
           interviewers={interviewers}
-          onChange={(event) => setInterviewer(event)}
+          onChange={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">

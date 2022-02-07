@@ -37,7 +37,7 @@ const Appointment = (props) => {
       student: name,
       interviewer,
     };
-    transition(CONFIRM_SAVE)
+    // transition(CONFIRM_SAVE)
     transition(SAVING);
     bookInterview(id, interview)
       .then(() => transition(SHOW))
@@ -49,7 +49,7 @@ const Appointment = (props) => {
   };
   // this function deletes the form and return to the EMPTY state.
   const onDelete = async() => {
-    transition(DELETE);
+    transition(DELETE, true);
     deleteInterview(id)
       .then(() => transition(EMPTY))
       .catch((error) => {
@@ -66,7 +66,7 @@ const Appointment = (props) => {
     <Show
       student={interview.student}
       interviewer={interview.interviewer}
-      onEdit={() => transition(CONFIRM_EDIT)}
+      onEdit={() => transition(CREATE)}
       onDelete={() => transition(CONFIRM_DELETE)}
     />
   ) : (
