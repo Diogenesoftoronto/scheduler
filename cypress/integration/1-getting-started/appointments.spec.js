@@ -1,3 +1,4 @@
+
 describe("Appointments", () => {
   beforeEach(() => {
     cy.request("GET", "/api/debug/reset");
