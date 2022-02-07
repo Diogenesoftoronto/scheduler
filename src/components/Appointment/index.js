@@ -10,20 +10,31 @@ import Error from "./Error";
 import Confirm from "./Confirm";
 // import modes from "../../constants/modes.json";
 
-const modes = {EMPTY: "EMPTY",
-SHOW: "SHOW",
-CREATE: "CREATE",
-SAVING: "SAVING",
-ERROR: "ERROR",
-CONFIRM_DELETE: "CONFIRM_DELETE",
-CONFIRM_SAVE: "CONFIRM_SAVE",
-CONFIRM_EDIT: "CONFIRM_EDIT",
-DELETE: "DELETE"
-}
-const { SHOW, CREATE, SAVING, ERROR, EMPTY, CONFIRM_DELETE, CONFIRM_SAVE, CONFIRM_EDIT, DELETE } = modes
+const modes = {
+  EMPTY: "EMPTY",
+  SHOW: "SHOW",
+  CREATE: "CREATE",
+  SAVING: "SAVING",
+  ERROR: "ERROR",
+  CONFIRM_DELETE: "CONFIRM_DELETE",
+  CONFIRM_SAVE: "CONFIRM_SAVE",
+  CONFIRM_EDIT: "CONFIRM_EDIT",
+  DELETE: "DELETE",
+};
+const {
+  SHOW,
+  CREATE,
+  SAVING,
+  ERROR,
+  EMPTY,
+  CONFIRM_DELETE,
+  CONFIRM_SAVE,
+  CONFIRM_EDIT,
+  DELETE,
+} = modes;
 
 // modes of appointment
-// may convert to json object later 
+// may convert to json object later
 // destructuring modes
 // const { SHOW, CREATE, SAVING, ERROR, EMPTY, CONFIRM_DELETE, CONFIRM_SAVE, CONFIRM_EDIT, DELETE } = JSON.parse(modes);
 const Appointment = (props) => {
@@ -31,24 +42,26 @@ const Appointment = (props) => {
     props;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
   let errorMessage = "unable to book appointment";
+  const { student, interviewer } = interview
+    ? interview
+    : { student: null, interviewer: null };
   // this function updates the form component with the completed form information when the save button
   const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer,
     };
-    // transition(CONFIRM_SAVE)
-    transition(SAVING);
+    transition(SAVING, true);
     bookInterview(id, interview)
       .then(() => transition(SHOW))
       .catch((error) => {
         transition(ERROR, true);
       });
-  
+
     return;
   };
   // this function deletes the form and return to the EMPTY state.
-  const onDelete = async() => {
+  const onDelete = () => {
     transition(DELETE, true);
     deleteInterview(id)
       .then(() => transition(EMPTY))
@@ -57,23 +70,15 @@ const Appointment = (props) => {
       });
   };
 
- 
   // this function closes the error component and returns to the EMPTY state.
   const onClose = () => {
     back();
   };
-  const showComponent = interview ? (
+  const showComponent = (
     <Show
-      student={interview.student}
-      interviewer={interview.interviewer}
+      student={student}
+      interviewer={interviewer}
       onEdit={() => transition(CREATE)}
-      onDelete={() => transition(CONFIRM_DELETE)}
-    />
-  ) : (
-    <Show
-      student={null}
-      interviewer={"N/A"}
-      onEdit={() => transition(CONFIRM_EDIT)}
       onDelete={() => transition(CONFIRM_DELETE)}
     />
   );
@@ -104,7 +109,7 @@ const Appointment = (props) => {
       message={confirmSaveMessage}
       interview={interview}
       onCancel={back}
-      onConfirm={() => save(interview.student, interview.interviewer)}
+      onConfirm={() => save(student, interviewer)}
     />
   );
   // confirm edit component
@@ -117,21 +122,13 @@ const Appointment = (props) => {
       onConfirm={() => transition(CREATE)}
     />
   );
-  const createComponent = interview ? (
+  const createComponent = (
     <Form
       interviewers={interviewers}
-      interviewer={interview.interviewer}
+      interviewer={interviewer}
       onCancel={back}
       onSave={save}
-      student={interview.student}
-    />
-  ) : (
-    <Form
-      interviewers={interviewers}
-      interviewer={null}
-      onCancel={back}
-      onSave={save}
-      student={null}
+      student={student}
     />
   );
   const emptyComponent = <Empty onAdd={() => transition(CREATE)} />;

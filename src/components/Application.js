@@ -10,13 +10,13 @@ import {
 import useApplicationData from "./hooks/useApplicationData";
 
 function Application(props) {
-  const { state, setDay, bookInterview, deleteInterview} = useApplicationData();
+  const { state, setDay, bookInterview, deleteInterview } =
+    useApplicationData();
   const { day, days } = state;
-
 
   // render interviewers by the selected day
   const interviewersArr = getInterviewersForDay(state, day);
-  
+
   // render appointments by the selected day
   const appointmentsForDay = getAppointmentsForDay(state, day);
   const AppointmentMap = Object.values(appointmentsForDay).map((app) => {
@@ -51,11 +51,10 @@ function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{AppointmentMap}
-      <Appointment key={"last"} time={"5pm"}/>
-      
+      <section className="schedule">
+        {AppointmentMap}
+        <Appointment key={"last"} time={"5pm"} />
       </section>
-
     </main>
   );
 }

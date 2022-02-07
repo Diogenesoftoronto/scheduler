@@ -36,7 +36,7 @@ const Form = (props) => {
         <InterviewerList
           value={interviewerState}
           interviewers={interviewers}
-          onChange={setInterviewer}
+          onChange={(id) => setInterviewer(id)}
         />
       </section>
       <section className="appointment__card-right">
@@ -44,10 +44,7 @@ const Form = (props) => {
           <Button danger onClick={onCancel}>
             Cancel
           </Button>
-          <Button
-            confirm
-            onClick={() => validate()}
-          >
+          <Button confirm onClick={() => validate()}>
             Save
           </Button>
         </section>
