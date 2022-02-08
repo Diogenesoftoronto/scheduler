@@ -1,3 +1,7 @@
+
+
+
+
 # Interview Scheduler
 
 ## About
@@ -7,12 +11,8 @@ The same thing happens when deleting an interview. The user will recieve a confi
 When a user saves an interview no confirmation message will be displayed.
 The user will see a loading message while the interview is being saved. On success, the user will see the interview. On failure, the user will see an error message. The user will be able to close the error message and try again to create an interview.
 
-## Images
-![Creating](https://i.imgur.com/QQQQQQQ.png)
-![Deleting](https://i.imgur.com/QQQQQQQ.png)
-![Editing](https://i.imgur.com/QQQQQQQ.png)
-![Changing Day](https://i.imgur.com/QQQQQQQ.png)
-![Error](https://i.imgur.com/QQQQQQQ.png)
+## Video
+https://user-images.githubusercontent.com/87236699/152902885-0da8a2e3-1e72-491d-b24f-662f00fc0ede.mp4
 ## Dependencies
 
     React
