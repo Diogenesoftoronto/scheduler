@@ -12,7 +12,7 @@ When a user saves an interview no confirmation message will be displayed.
 The user will see a loading message while the interview is being saved. On success, the user will see the interview. On failure, the user will see an error message. The user will be able to close the error message and try again to create an interview.
 
 ## Video
-![Introduction to the Application](https://user-images.githubusercontent.com/87236699/152902885-0da8a2e3-1e72-491d-b24f-662f00fc0ede.mp4)
+https://user-images.githubusercontent.com/87236699/152902885-0da8a2e3-1e72-491d-b24f-662f00fc0ede.mp4
 ## Dependencies
 
     React
