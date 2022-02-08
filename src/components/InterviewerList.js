@@ -11,7 +11,7 @@ const InterviewerList = (props) => {
       key={id}
       name={name}
       avatar={avatar}
-      setInterviewer={onChange(id)}
+      setInterviewer={() => onChange(id)}
       selected={value === id}
     />
 });

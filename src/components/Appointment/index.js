@@ -41,25 +41,25 @@ const Appointment = (props) => {
   const { id, time, interview, interviewers, bookInterview, deleteInterview } =
     props;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
-  let errorMessage = "unable to book appointment";
-  const { student, interviewer } = interview
-    ? interview
-    : { student: null, interviewer: null };
   // this function updates the form component with the completed form information when the save button
-  const save = (name, interviewer) => {
+  const save = async(name, interviewer) => {
     const interview = {
       student: name,
       interviewer,
     };
-    transition(SAVING, true);
+    transition(SAVING);
     bookInterview(id, interview)
-      .then(() => transition(SHOW))
-      .catch((error) => {
-        transition(ERROR, true);
-      });
-
+    .then(() => transition(SHOW))
+    .catch((error) => {
+      transition(ERROR, true);
+    });
+    
     return;
   };
+  let errorMessage = "unable to book appointment";
+  const { student, interviewer } = interview
+    ? interview
+    : { student: null, interviewer: null };
   // this function deletes the form and return to the EMPTY state.
   const onDelete = () => {
     transition(DELETE, true);
